@@ -24,8 +24,10 @@ save_num = 0
 best_acc = 0
 train_log_file = os.path.join(path, "train/train.log")
 
-with open(train_log_file, 'r'):
+if os.path.exists(train_log_file):
     print("log was built")
+else:
+    open(train_log_file, "w", encoding="utf-8")
 
 for epoch in range(epochs):
     # 动态调整学习率

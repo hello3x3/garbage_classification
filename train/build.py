@@ -1,9 +1,10 @@
 import os
+import sys
 import glob
 import torch
 import torchvision
-from PIL import Image
 from torch import nn
+from PIL import Image
 from torchvision import transforms
 from torch.utils.data import DataLoader, Dataset
 
@@ -64,7 +65,10 @@ class MyDataset(Dataset):
             # 获取每一张图片的路径，格式如下
             #"datasets/garbage/train/airplane/aeroplane_s_000021.png"
             # 获取类别名
-            img_label_name = img_item.split("\\")[-2]
+            if sys.platform == "linux":
+                img_label_name = img_item.split("/")[-2]
+            else:
+                img_label_name = img_item.split("\\")[-2]
             # 保存图片路径和类别名对应的id
             imgs.append([img_item, label_dict[img_label_name]])
 
