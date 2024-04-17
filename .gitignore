@@ -1,0 +1,6 @@
+uploads/*
+test*
+ckpt/*
+__pycache__/
+datasets/
+flagged/
